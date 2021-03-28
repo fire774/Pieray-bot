@@ -1,6 +1,9 @@
 # Pieray-bot
 Pieray &amp; reset script for AutoHotKey
 
+For a more detailed explanation and info on criteria:
+https://youtu.be/B1NopkA0B-c
+
 AutoHotKey must be downloaded to run this script.
 https://www.autohotkey.com/
 
@@ -24,3 +27,5 @@ SET UP THE PIE CHART BEFORE RUNNING! Go into a world, open the pie chart manuall
 The script cannot be run directly from a world if that world is open to LAN. If you do open a world to LAN, exit to the title screen and it should work fine.
 
 Since previous world files are not automatically deleted, if you don't have a great computer I don't recommend leaving this running for several hours at a time because world creation can become laggy and inconsistent after a few hundred resets.
+
+If you run into a problem please let me know, code is prone to bugs.
