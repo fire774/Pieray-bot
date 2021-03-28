@@ -22,7 +22,7 @@ At the top of the script, you'll see some global variables defined. DELAY holds 
 After changing the global variables, make sure to save the file and double click it to run.
 
 # Important info
-SET UP THE PIE CHART BEFORE RUNNING! Go into a world, open the pie chart manually with Shift+F3, and use the numbers on your keyboard to navigate into the following subsets of the pie: tick > level > entities > block entities. The bot cannot do this by itself because "tick" is not always the same, although the order will probably be something similar to "4, 1, 1, 3."
+SET UP THE PIE CHART BEFORE RUNNING! Go into a world, open the pie chart manually with Shift+F3, and use the numbers on your keyboard to navigate into the following subsets of the pie: tick > level > entities > block entities. The bot cannot do this by itself without invalidating the run - the order will probably be something similar to "4, 1, 1, 3." Once you set it up you can leave it unless you close the window (in which case you'll need to reset it again).
 
 The script cannot be run directly from a world if that world is open to LAN. If you do open a world to LAN, exit to the title screen and it should work fine.
 
