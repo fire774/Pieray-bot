@@ -17,7 +17,7 @@ SetDefaults()
    global IGNORE_BIOMES, VILLAGES, TTS_OFF
 
    ; Set the delay time between inputs (in milliseconds)
-      DELAY = 20
+      DELAY = 70
 
    ; Select specific biomes to search for (change to "true")
       BEACH := true
