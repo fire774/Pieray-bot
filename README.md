@@ -34,6 +34,10 @@ If you run into a problem please let me know, code is prone to bugs.
 version 1.1 (03-29-2021): Filtering for chests and blacksmiths is now optional, they're no longer hard coded into the Pieray bot. Added option of SIMPLE_RESET which only resets the world once, it does not search for anything. Default delay set to 70ms, as recommended by the mods. 
 
 # Look here if you have a problem
+If the world is open to LAN, exit to the title screen run it.
+
+You must have at least ONE world created before running the script, so it can find the correct directory.
+
 If you use fullscreen mode and the bot does not work properly right after downloading it, go to windowed then back to fullscreen and restart the script. 
 
 MultiMC users: Pieray bot uses the local AppData directory to find your world files, so you'll have to manually change %A_AppData% to match your instance of Minecraft (Thanks Surreal for letting me know).
