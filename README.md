@@ -36,7 +36,7 @@ version 1.1 (03-29-2021): Filtering for chests and blacksmiths is now optional, 
 # Look here if you have a problem
 Do not start the script from the pause menu.
 
-If the world is open to LAN, exit to the title screen run it.
+If the world is open to LAN, exit to the title screen and run it.
 
 You must have at least ONE world created before running the script, so it can find the correct directory.
 
