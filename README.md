@@ -1,5 +1,5 @@
 # Pieray-bot
-Pieray &amp; reset script for AutoHotKey
+Pieray &amp; reset script for AutoHotKey. Approved for 1.16 RSG runs.
 
 For a more detailed explanation and info on criteria:
 https://youtu.be/B1NopkA0B-c
@@ -29,3 +29,6 @@ The script cannot be run directly from a world if that world is open to LAN. If 
 Since previous world files are not automatically deleted, if you don't have a great computer I don't recommend leaving this running for several hours at a time because world creation can become laggy and inconsistent after a few hundred resets.
 
 If you run into a problem please let me know, code is prone to bugs.
+
+# Update log
+version 1.1 (03-29-2021): Filtering for chests and blacksmiths is now optional, they're no longer hard coded into the Pieray bot. Added option of SIMPLE_RESET which only resets the world once, it does not search for anything. Default delay set to 70ms, as recommended by the mods. 
