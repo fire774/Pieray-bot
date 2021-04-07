@@ -47,8 +47,9 @@ SetDefaults()
       TTS_OFF := false
 
    ; Restrict Pieray bot from filtering for anything (ALL OTHER SETTINGS ARE IGNORED)
-   ; simply resets the world when the hotkey is pressed
-      SIMPLE_RESET = false
+   ; SIMPLE_RESET simply resets the world when the hotkey is pressed
+   ; change to 1 to activate, 0 to deactivate
+      SIMPLE_RESET = 0
 
 ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ;
       
