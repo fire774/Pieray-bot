@@ -31,7 +31,9 @@ Since previous world files are not automatically deleted, if you don't have a gr
 If you run into a problem please let me know, code is prone to bugs.
 
 # Update log
-version 1.1 (03-29-2021): Filtering for chests and blacksmiths is now optional, they're no longer hard coded into the Pieray bot. Added option of SIMPLE_RESET which only resets the world once, it does not search for anything. Default delay set to 70ms, as recommended by the mods. 
+version 1.1 (03-29-2021): Filtering for chests and blacksmiths is now optional, they're no longer hard coded into the Pieray bot. Added option of SIMPLE_RESET which only resets the world once, it does not search for anything. Default delay set to 70ms, as recommended by the mods.
+
+04-11-2021: Added the LITE version, which does not use pieray. It filters by biome only, and does not use AHK's PixelSearch function which has recently been really buggy. Use this if you want a simplified version or the original is not working. Find it here: https://github.com/fire774/Pieray-bot/tree/fire774-lite
 
 # Look here if you have a problem
 Do not start the script from the pause menu.
@@ -41,6 +43,8 @@ If the world is open to LAN, exit to the title screen and run it.
 You must have at least ONE world created before running the script, so it can find the correct directory.
 
 If you use fullscreen mode and the bot does not work properly right after downloading it, go to windowed then back to fullscreen and restart the script. 
+
+Use the LITE version for a much more reliable script: https://github.com/fire774/Pieray-bot/tree/fire774-lite
 
 MultiMC users: Pieray bot uses the local AppData directory to find your world files, so you'll have to manually change %A_AppData% to match your instance of Minecraft (Thanks Surreal for letting me know).
 
