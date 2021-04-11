@@ -18,7 +18,7 @@ SetDefaults()
 ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ;
 
    ; Set the delay time between inputs (in milliseconds)
-      DELAY = 25
+      DELAY = 50
 
    ; Select specific biomes to search for (change to "true" or "false")
       BEACH := true
