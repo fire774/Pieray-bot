@@ -1,3 +1,5 @@
+THIS VERSION DOES NOT USE PIERAY. IT FILTERS BY BIOMES.
+
 # Pieray-bot
 Pieray &amp; reset script for AutoHotKey. Approved for 1.16 RSG runs.
 
