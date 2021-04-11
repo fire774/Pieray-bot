@@ -6,7 +6,6 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; author: fire774
 ; contact me on discord: fire#3543
 
-
 ; default global variables
 ; CHANGE THESE VALUES
 SetDefaults()
@@ -14,42 +13,28 @@ SetDefaults()
    ; global variables ;
    global DELAY
    global BEACH, DESERT, FOREST, OCEAN, SAVANNA, PLAINS, JUNGLE
-   global IGNORE_BIOMES, CHESTS, BLACKSMITHS, VILLAGES, TTS_OFF, SIMPLE_RESET
+   global TTS_OFF, SIMPLE_RESET
 
 ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ;
 
    ; Set the delay time between inputs (in milliseconds)
-      DELAY = 70
+      DELAY = 25
 
    ; Select specific biomes to search for (change to "true" or "false")
       BEACH := true
       FOREST := true
       PLAINS := true
       DESERT := true
-      SAVANNA := true
+      SAVANNA := false
       OCEAN := true
-      JUNGLE := true
+      JUNGLE := false
 
-   ; Ignore biomes (equivalent to making all of the above "false")
-      IGNORE_BIOMES := false
-
-   ; Stops on chests detections (shipwrecks, buried treasure, etc)
-   ; ignores abandoned mineshafts
-      CHESTS := true
-
-   ; Plays blacksmiths (may occasionally be a false positive igloo)
-      BLACKSMITHS := true
-
-   ; Plays villages (without blacksmiths)
-      VILLAGES := true
+   ; Turn to 1 to IGNORE ALL OTHER SETTINGS
+   ; simply resets the world when the hotkey is pressed
+      SIMPLE_RESET = 0
 
    ; Disable TTS audio files from playing when a seed is found
       TTS_OFF := false
-
-   ; Restrict Pieray bot from filtering for anything (ALL OTHER SETTINGS ARE IGNORED)
-   ; SIMPLE_RESET simply resets the world when the hotkey is pressed
-   ; change to 1 to activate, 0 to deactivate
-      SIMPLE_RESET = 0
 
 ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ; ;
       
@@ -197,7 +182,7 @@ SpawnBiome(biome)
 CheckBiomes() 
 {
    global BEACH, DESERT, FOREST, OCEAN, SAVANNA, PLAINS, JUNGLE
-   global IGNORE_BIOMES, CHESTS, BLACKSMITHS, VILLAGES, TTS_OFF, SIMPLE_RESET
+   global IGNORE_BIOMES, TTS_OFF, SIMPLE_RESET
    if(BEACH)
    {
       if SpawnBiome("beach")
@@ -267,90 +252,12 @@ CheckBiomes()
    }
 }
 
-; checks if there are any special blocks on pie chart
-PieRay()
-{
-   global CHESTS, BLACKSMITHS, VILLAGES, TTS_OFF
-   Sleep, 500
-   WinGetPos, X, Y, Width, Height, A
-   HalfWidth := Width//2
-   Xsearch1 := HalfWidth
-   Ysearch1 := 0
-   Xsearch2 := Width
-   Ysearch2 := Height
-   ; filtering for furnace detections (blacksmiths)
-   If(BLACKSMITHS)
-   {
-      PixelSearch, Xfound, Yfound, %Xsearch1%, %Ysearch1%, %Xsearch2%, %Ysearch2%, 0xCEE4C4, 1, Fast
-      if(!ErrorLevel)
-      {
-         if !(TTS_OFF)
-            SoundPlay, %A_ScriptDir%\Audio\blacksmith.mp3
-         return true
-      }  
-   }
-   ; filtering for villages (no blacksmiths)
-   If (VILLAGES)
-   {
-      ; filtering for brewing stand (village spawn)
-      PixelSearch, Xfound2, Yfound2, %Xsearch1%, %Ysearch1%, %Xsearch2%, %Ysearch2%, 0x6EEE4E, 1, Fast
-      if(!ErrorLevel)
-      {
-         if !(TTS_OFF)
-            SoundPlay, %A_ScriptDir%\Audio\village_detected.mp3
-         return true
-      }
-       
-      ; filtering for a bell (village spawn)
-      Else
-      {
-         PixelSearch, Xfound2, Yfound2, %Xsearch1%, %Ysearch1%, %Xsearch2%, %Ysearch2%, 0xE466EE, 1, Fast
-         if(!ErrorLevel)
-         {
-            if !(TTS_OFF)
-               SoundPlay, %A_ScriptDir%\Audio\village_detected.mp3
-            return true
-         }
-      }
-   }
-
-   ; filtering for chest detections
-   If(CHESTS)
-   {
-      PixelSearch, Xfound, Yfound, %Xsearch1%, %Ysearch1%, %Xsearch2%, %Ysearch2%, 0xE46EC6, 1, Fast
-      if (!ErrorLevel)
-      {
-         ; filtering for mob spawners (abandoned mineshafts)
-         PixelSearch, Xfound2, Yfound2, %Xsearch1%, %Ysearch1%, %Xsearch2%, %Ysearch2%, 0xCCE44E, 1, Fast
-         ; mob spawner is found
-         if(!ErrorLevel)
-         {
-            return false
-         }
-         ; all non-mineshaft chest cases
-         Else
-         {
-            ; only a chest is detected (unknown / outer case)
-            if !(TTS_OFF)
-               SoundPlay, %A_ScriptDir%\Audio\chest_nearby.mp3
-            return true
-         }
-      }
-   }
-
-   ; nothing is found
-   Else
-   {
-      return false
-   }
-}
-
 ; main function to reset the program
 LoopCreation()
 {
    ; global variables ;
    global BEACH, DESERT, FOREST, OCEAN, SAVANNA, PLAINS, JUNGLE
-   global IGNORE_BIOMES, CHESTS, BLACKSMITHS, VILLAGES, TTS_OFF, SIMPLE_RESET
+   global IGNORE_BIOMES, TTS_OFF, SIMPLE_RESET
 
    ; local variables ;
    WinGetActiveTitle, TITLE
@@ -364,62 +271,20 @@ LoopCreation()
    else
    {
       ExitWorld()
-      Loop
-      {
-         IfWinActive, Minecraft
-         {
-            PixelSearch, Xfound3, Yfound3, 0, Height-40, 50, Height, 0xFCFCFC, 1, Fast
-            if(ErrorLevel)
-            {
-               Sleep, 200
-            }
-            Else
-            {
-            CreateWorld()
-            break
-            }
-         }
-      }
+      Sleep, 1500
+      CreateWorld()
    }
-   If !(%SIMPLE_RESET%)
+
+   If !(SIMPLE_RESET)
    {
          ; wait until the world is generated
       FinishLoadingWorld()
    
-      ; not searching for biomes
-      if(IGNORE_BIOMES)
-      {
-         CheckDebug()
-         if !(PieRay())
-         {
-            LoopCreation()
-         }
-         Send {F3}
-      }
-   
-      ; searching for biomes
-      Else
-      {
-        ; check if spawn biome matches one being searched for
-         CheckBiomes()
-         ; if spawn biome is good, piechart is checked and world is not reset
-         if(CheckBiomes())
-         {
-            CheckDebug()
-            PieRay()
-            Send {F3}
-         }
-   
-         ; check pieray and reset if nothing is found
-         Else
-         {
-           CheckDebug()
-            if !(PieRay())
-            {
-               LoopCreation()
-            }
-         } 
-      }
+        ; searching for biomes
+     ; check if spawn biome matches one being searched for
+      CheckBiomes()
+      if !(CheckBiomes())
+         LoopCreation()
    }
 }
 
