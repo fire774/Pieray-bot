@@ -1,5 +1,5 @@
 # Pieray-bot
-Pieray &amp; reset script for AutoHotKey. Approved for 1.16 RSG runs.
+Pieray &amp; reset script for AutoHotKey. NO LONGER APPROVED FOR 1.16 RSG RUNS. DO NOT USE (Currently under developement).
 
 For a more detailed explanation and info on criteria:
 https://youtu.be/B1NopkA0B-c
